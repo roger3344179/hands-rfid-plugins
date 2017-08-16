@@ -1,0 +1,32 @@
+{
+  "name": "hands-rfid-plugins",
+  "version": "1.0.1",
+  "description": "You can use the BarcodeScanner plugin to scan different types of barcodes (using the device's camera) and get the metadata encoded in them for processing within your application.",
+  "cordova": {
+    "id": "hands-rfid-plugins",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "ecosystem:phonegap",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Roger",
+  "license": "JFXX",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}
