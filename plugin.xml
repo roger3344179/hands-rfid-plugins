@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="hands-rfid-plugins" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>hands-rfid-plugins</name>
+    
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+    
+    <js-module name="RFIDOprate" src="www/hands-rfid-plugins.js">
+        <clobbers target="cordova.plugins.RFIDOprate" />
+    </js-module>
+    
+    <platform name="android">
+    	<source-file src="src/android/rfid.reader.api.jar" target-dir="libs"/>
+    	<source-file src="src/android/com/jfxx/rfid/hands/RFIDOprate.java" target-dir="src/com/jfxx/rfid/hands" />
+    	<source-file src="src/android/org/apache/cordova/CordovaActivity.java" target-dir="src/org/apache/cordova" />
+    	<source-file src="src/android/com/jfxx/rfid/hands/MaskType.java" target-dir="src/com/jfxx/rfid/hands" />
+    	<source-file src="src/android/com/jfxx/rfid/hands/IRFIDActivity.java" target-dir="src/com/jfxx/rfid/hands" />
+    	
+    	<config-file target="res/xml/config.xml" parent="/*">
+            <feature name="RFIDOprate">
+                <param name="android-package" value="com.jfxx.rfid.hands.RFIDOprate" />
+            </feature>
+        </config-file>
+    	
+    	<config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    		<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    		<uses-permission android:name="android.permission.BLUETOOTH" />
+    		<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    		<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    		<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    		<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    		<uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        	<activity
+            	android:name="com.atid.lib.device.dialog.DeviceListActivity"
+            	android:theme="@android:style/Theme.Dialog">
+            	<intent-filter>
+                	<action android:name="DeviceListActivity" />
+                	<category android:name="android.intent.category.DEFAULT" />
+            	</intent-filter>
+        	</activity>
+        	<activity
+            	android:name="com.atid.lib.device.dialog.BleDeviceListActivity"
+            	android:screenOrientation="portrait"
+            	android:theme="@android:style/Theme.Dialog">
+            	<intent-filter>
+                	<action android:name="DeviceListActivity" />
+                	<category android:name="android.intent.category.DEFAULT" />
+            	</intent-filter>
+        	</activity> 
+        </config-file>
+        
+        <config-file target="res/values/strings.xml" parent="/resources">
+        	<!-- Inventory Activity -->
+    <string name="operation_time">Operation Time</string>
+    <string name="power_gain">Power Gain</string>
+    <string name="display_pc">Display PC</string>
+    <string name="report_rssi">Report RSSI</string>
+    <string name="continuous_mode">Continuous Mode</string>
+    <string name="count">Count</string>
+    <string name="restart_time">Restart Time</string>
+	<string name="action_inventory">Inventory</string>
+    <string name="action_clear">Clear</string>
+	<string name="action_ok">OK</string>
+	<string name="action_stop">Stop</string>
+    <!-- Menu String -->
+    <string name="connect_bt_device">Connect to last bluetooth device</string>
+    <string name="connect_new_bt_device">Connect to new bluetooth device</string>
+    <string name="connect_ble_device">Connect to BLE device</string>
+    <string name="disconnect">Disconnect from device</string>
+
+    <!-- Message -->
+	<string name="connecting_reader">Connecting to device.\r\nPlease wait&#8230;</string>
+	<string name="disconnecting_reader">Disconnecting to device.\r\nPlease wait&#8230;</string>
+	<string name="not_support_firmware">This DEMO App can have compatibility over Ver.2.2 to firmware.\r\nPlease try again after update RF Blaster fimware Ver.2.2</string>
+	<!-- Main Acitivity Dialog String -->
+    <string name="system_error">System Error</string>
+    <string name="system_alert">System Alert</string>
+    <string name="bluetooth_not_supported_message">This device does not support Bluetooth.</string>
+        </config-file>
+    </platform>
+    
+</plugin>
